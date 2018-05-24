@@ -1,5 +1,5 @@
-﻿$urls = Get-Content -Path "<PATH>\raw_uber_data_urls.txt"
-$destfolder = "<PATH>\Azure\Azure SQLDW\NYC Data\Uber\"
+﻿$urls = Get-Content -Path "<PathToURLFile>\raw_uber_data_urls.txt"
+$destfolder = "<PathToDownloadDataTo>\NYC Data\Uber\"
 foreach ($url in $urls)
 {
     $dest = $url -split "data/"
