@@ -35,8 +35,10 @@ In the second folder [2. Uploade to DataLake](https://github.com/pansaty/Buildin
 ## Organize files into seperate Subfolders by year per dataset
 The next step will be to organize the files. You can leverage the script "Move Files Around.ps1" from the [3. Organize files to folders](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/3.%20Organize%20files%20to%20folders) folder. 
 
-## Leverage ADLA and USQL 
+## Prepare the data using USQL and PowerShell
 Now that we have all our data landed in DataLake store we can prepare the data to be ingested into SQLDW. For this task we are using Azure Data Lake Analytics (ADLA). In the folder [4. Use USQL to Normalize schema](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/4.%20Use%20USQL%20to%20Normalize%20schema) are a series of USQL script files to handle for the various schemas from different years for each of the taxi data sets. The scripts are installed as stored procedures in your ADLA acocunt and will be invoked in parallel in the next step via PowerShell to transform all the files. You can review [U-SQL concepts](https://msdn.microsoft.com/en-us/azure/data-lake-analytics/u-sql/u-sql-concepts) for more information on working with ADLA and U-SQL. 
+
+Once we have the Stored Procedures deployed to the ADLA Account, we can now invoke them via PowerShell. There are 3 PowerShell scripts within [4. Use USQL to Normalize schema](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/4.%20Use%20USQL%20to%20Normalize%20schema) to handle for fhv, green and yellow Taxi datasets. The PowerShell script contain the logic by looking at the files names to invoke the right stored procedure that corresponds to that year's schema. The result will be a new set of files created into the Prepared folder with standardized schema across all files. For example for yellow Taxi data between 2015 and the first halk for 2016, there was no  pickup_location_id or dropoff_location_id. To create a unified schema, we can read the file and artificially inject two columns with that name and null values written to a new file in the prepared folder. 
 
 ## Recording on Cloud Simplified showcasing this project
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=uNzH5kcAaTk
