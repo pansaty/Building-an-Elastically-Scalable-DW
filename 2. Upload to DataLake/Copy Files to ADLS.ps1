@@ -1,12 +1,15 @@
 ﻿ # Data Lake items
-$foldertoupload = "H:\TPC-H Toolkit\2.17.3\dbgen"
-$destinationDataLakeAccount = "pankajcsa"
-$dataLakeFolder = "/DataFiles/tpc-h_500gb/" 
+$foldertoupload = "<Local folder containing NY Dataset>"
+$destinationDataLakeAccount = "<DataLakeAccount>"
+$dataLakeFolder = "/Path within datalake account to upload to/" #ex "/DataFiles/NyTaxi/Raw/"
 
 # Login Items
-$tenantID = "72f988bf-86f1-41af-91ab-2d7cd011db47"
-$AuthKey = "jKOZ8oUHB+pyAdb6sd8E61zFzGSA8ME7HXtSF6Bm+4Q="
-$AppId = "4c42aac1-51ff-4b07-8c93-6cb8d9fee076" #ID FOR YETANOTHERTEST
+#You need to first setup Service-to-service auth by following these instructions:
+##https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory
+
+$tenantID = "<Your Tenant ID>"
+$AuthKey = "<AUTH Key for your application>"
+$AppId = "<App ID>" 
 
 # Login an select subscription
 $secpasswd = ConvertTo-SecureString $AuthKey -AsPlainText -Force
@@ -14,12 +17,12 @@ $mycreds = New-Object System.Management.Automation.PSCredential ($AppId, $secpas
 Login-AzureRmAccount -ServicePrincipal -Tenant $tenantID  -Credential $mycreds
 #Select-AzureRmSubscription -SubscriptionId $subscriptionId
  
-#Upload and entire folder
+#Upload an entire folder
 Import-AzureRmDataLakeStoreItem -AccountName $destinationDataLakeAccount -Path $foldertoupload -Destination $dataLakeFolder -Force
 
 
 #Upload certain files in a folder
-
+<#
 $files = Get-ChildItem $foldertoupload\* -Include *.tbl 
 foreach ($file in $files)
 {
@@ -30,6 +33,4 @@ foreach ($file in $files)
     $write =  "END   Upload: " + $file
     Write-Output $write
 }
-
-Import-AzureRmDataLakeStoreItem -AccountName $destinationDataLakeAccount -Path 'H:\TPC-H Toolkit\2.17.3\dbgen\lineitem.tbl' -Destination $dataLakePath -Force
-
+#>

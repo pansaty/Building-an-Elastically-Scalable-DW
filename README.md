@@ -18,6 +18,7 @@ In the first folder [1. Downloading Taxi Dataset](https://github.com/pansaty/Bui
 For the purposes of this data set, I tried to partition my data by year within seperate folders. Initially we will be uploading all the files to the root of the Raw folder in the next step and subsequently we will run a PowerShell script to move the files around into their respective folders. Optionally we could have uploaded to a staging folder then moved to subfolders under raw. The intent of the Raw folder is to keep a prisitine copy of the source data untransformed in it raw state with all columns and no cleansing. The purpose for keeping this raw dataset can serve multiple purposes a few being, audit, being able to go back at any point and seeing what the untransformed version of the data looked like, extracting data elements in the future that may not be relevant today and more. 
 
 Below is a sampling of the structure. We have the root called NYTaxi and two subfolders beneath Prepared which is our cleansed data set and Raw which is our original dataset.
+
 ![alt text](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/blob/master/images/High%20Level%20Folder.png "High level folders")
 
 
