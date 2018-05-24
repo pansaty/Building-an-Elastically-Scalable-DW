@@ -1,0 +1,27 @@
+﻿USE DATABASE NYCTaxi;
+
+DROP PROCEDURE IF EXISTS NYCTaxi.dbo.PrepFHV_Pre2017;
+
+CREATE PROCEDURE NYCTaxi.dbo.PrepFHV_Pre2017(@Input string, @Output string)
+AS
+BEGIN
+
+    @fhv =
+        EXTRACT dispatching_base_num string,
+                pickup_datetime string,
+                pickup_location_id string
+        FROM @Input
+        USING Extractors.Csv(skipFirstNRows : 1);
+
+    @output =
+        SELECT dispatching_base_num,
+               pickup_datetime,
+               "" AS dropoff_datetime,
+               pickup_location_id,
+               "" AS dropoff_location_id
+        FROM @fhv;
+
+    OUTPUT @output
+    TO @Output
+    USING Outputters.Csv();
+END;

@@ -1,0 +1,81 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>0835a032-9b91-4c7d-9bd4-7a4137960c12</ProjectGuid>
+    <OutputType>File</OutputType>
+    <AssemblyName>Algebra.xml</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <Name>PrepareNYTaxiData</Name>
+    <RootNamespace>PrepareNYTaxiData</RootNamespace>
+    <RuntimeVersion>default</RuntimeVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Script Include="1. Create Database.usql" />
+    <Script Include="2. Preprare-fhv-2017.usql" />
+    <Script Include="3. Preprare-fhv-Pre2017.usql" />
+    <Script Include="4. Preprare-trip-green-Pre2015.usql" />
+    <Script Include="4.1. Preprare-trip-green-2015H1.usql" />
+    <Script Include="4.2 Preprare-trip-green-2015H2-2016H1.usql" />
+    <Script Include="4.3 Preprare-trip-green-2016H2.usql" />
+    <Script Include="4.4 Preprare-trip-green-2017.usql" />
+    <Script Include="5.1 Preprare-trip-yellow-Pre2015.usql" />
+    <Script Include="5.2 Preprare-trip-yellow-2015-2016H1.usql" />
+    <Script Include="5.3 Preprare-trip-yellow-2016H2.usql" />
+    <Script Include="5.4 Preprare-trip-yellow-2017.usql" />
+    <Script Include="6.1 Prepare Uber-2014.usql" />
+    <Script Include="6.2 Prepare Uber-2015.usql" />
+    <ScriptCode Include="1. Create Database.usql.cs">
+      <DependentUpon>1. Create Database.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="2. Preprare-fhv-2017.usql.cs">
+      <DependentUpon>2. Preprare-fhv-2017.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="3. Preprare-fhv-Pre2017.usql.cs">
+      <DependentUpon>3. Preprare-fhv-Pre2017.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="4. Preprare-trip-green-Pre2015.usql.cs">
+      <DependentUpon>4. Preprare-trip-green-Pre2015.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="4.1. Preprare-trip-green-2015H1.usql.cs">
+      <DependentUpon>4.1. Preprare-trip-green-2015H1.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="4.2 Preprare-trip-green-2015H2-2016H1.usql.cs">
+      <DependentUpon>4.2 Preprare-trip-green-2015H2-2016H1.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="4.3 Preprare-trip-green-2016H2.usql.cs">
+      <DependentUpon>4.3 Preprare-trip-green-2016H2.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="4.4 Preprare-trip-green-2017.usql.cs">
+      <DependentUpon>4.4 Preprare-trip-green-2017.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="5.1 Preprare-trip-yellow-Pre2015.usql.cs">
+      <DependentUpon>5.1 Preprare-trip-yellow-Pre2015.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="5.2 Preprare-trip-yellow-2015-2016H1.usql.cs">
+      <DependentUpon>5.2 Preprare-trip-yellow-2015-2016H1.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="5.3 Preprare-trip-yellow-2016H2.usql.cs">
+      <DependentUpon>5.3 Preprare-trip-yellow-2016H2.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="5.4 Preprare-trip-yellow-2017.usql.cs">
+      <DependentUpon>5.4 Preprare-trip-yellow-2017.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="6.1 Prepare Uber-2014.usql.cs">
+      <DependentUpon>6.1 Prepare Uber-2014.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="6.2 Prepare Uber-2015.usql.cs">
+      <DependentUpon>6.2 Prepare Uber-2015.usql</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <Import Project="$(AppData)\Microsoft\DataLake\MsBuild\1.0\Usql.targets" />
+</Project>

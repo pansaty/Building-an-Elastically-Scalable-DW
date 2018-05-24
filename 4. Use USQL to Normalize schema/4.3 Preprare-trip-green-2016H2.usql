@@ -1,0 +1,65 @@
+﻿USE DATABASE NYCTaxi;
+
+DROP PROCEDURE IF EXISTS NYCTaxi.dbo.GreenTrip_2016H2;
+
+CREATE PROCEDURE NYCTaxi.dbo.GreenTrip_2016H2(@Input string, @Output string)
+AS
+BEGIN
+
+    @green_tripdata =
+        EXTRACT 
+            vendor_id string,
+            lpep_pickup_datetime string,
+            lpep_dropoff_datetime string,
+            store_and_fwd_flag string,
+            rate_code_id string,
+            pickup_location_id string, 
+            dropoff_location_id string,  
+            passenger_count string,
+            trip_distance string,
+            fare_amount string,
+            extra string,
+            mta_tax string,
+            tip_amount string,
+            tolls_amount string,
+            ehail_fee string,
+            improvement_surcharge string, 
+            total_amount string,
+            payment_type string,
+            trip_type string,
+            junk1 string,
+            junk2 string
+        FROM @Input
+        USING Extractors.Csv(skipFirstNRows : 1);
+
+    @output =
+        SELECT             
+            vendor_id ,
+            lpep_pickup_datetime ,
+            lpep_dropoff_datetime ,
+            store_and_fwd_flag ,
+            rate_code_id ,
+            pickup_location_id, 
+            dropoff_location_id,  
+            "" AS pickup_longitude ,
+            "" AS pickup_latitude ,
+            "" AS dropoff_longitude ,
+            "" AS  dropoff_latitude ,
+            passenger_count ,
+            trip_distance ,
+            fare_amount ,
+            extra ,
+            mta_tax ,
+            tip_amount ,
+            tolls_amount ,
+            ehail_fee ,
+            improvement_surcharge, 
+            total_amount ,
+            payment_type ,
+            trip_type 
+        FROM @green_tripdata;
+
+    OUTPUT @output
+    TO @Output
+    USING Outputters.Csv();
+END;

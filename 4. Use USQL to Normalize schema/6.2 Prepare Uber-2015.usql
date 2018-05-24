@@ -1,0 +1,28 @@
+﻿/*USE DATABASE NYCTaxi;
+
+DROP PROCEDURE IF EXISTS NYCTaxi.dbo.PrepUber_2015;
+
+CREATE PROCEDURE NYCTaxi.dbo.PrepUber_2015(@Input string, @Output string)
+AS
+BEGIN
+*/
+    @Uber =
+        EXTRACT dispatch_base_num string,
+                Pickup_date string,
+                Affiliated_base_num string,
+                location_id string
+        FROM "DataFiles/NYTaxi/Raw/UberData/2015/uber-raw-data-janjune-15.csv" //@Input
+        USING Extractors.Csv(skipFirstNRows : 1);
+
+    @output =
+        SELECT dispatch_base_num,
+               Pickup_date,
+               "" AS latitude,
+               "" AS longitude,
+               location_id
+        FROM @Uber;
+
+    OUTPUT @output
+    TO "DataFiles/NYTaxi/Prepared/UberData/2015/uber-raw-data-janjune-15.csv" //@Output
+    USING Outputters.Csv();
+//END;

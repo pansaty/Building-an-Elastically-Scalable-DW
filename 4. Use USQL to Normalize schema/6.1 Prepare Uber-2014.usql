@@ -1,0 +1,28 @@
+﻿USE DATABASE NYCTaxi;
+
+DROP PROCEDURE IF EXISTS NYCTaxi.dbo.PrepUber_2014;
+
+CREATE PROCEDURE NYCTaxi.dbo.PrepUber_2014(@Input string, @Output string)
+AS
+BEGIN
+
+    @Uber =
+        EXTRACT Pickup_date string,
+                latitude string,
+                longitude string,
+                base_num string
+        FROM @Input
+        USING Extractors.Csv(skipFirstNRows : 1);
+
+    @output =
+        SELECT base_num,
+               Pickup_date,
+               latitude,
+               longitude,
+               "" AS location_id
+        FROM @Uber;
+
+    OUTPUT @output
+    TO @Output
+    USING Outputters.Csv();
+END;
