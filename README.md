@@ -21,7 +21,10 @@ Below is a sampling of the structure. We have the root called NYTaxi and two sub
 
 ![alt text](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/blob/master/images/High%20Level%20Folder.png "High level folders")
 
+If we expand Raw, you can see the subfolder setup by year for each of the datasets from fhv, Green and yellow taxis
 
+![alt text](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/blob/master/images/Expanded%20View.png "Expanded view")
 
+Setting up the folder structure was a manual step taken, but could easily be scripted. An example script for creating months within a subfolder is provided within [2. Uploade to DataLake](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/2.%20Upload%20to%20DataLake) folde. 
 ## Uploading the data to Azure DataLake Store
 In the second folder [2. Uploade to DataLake](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/2.%20Upload%20to%20DataLake) the powershell script "Copy Files to ADLS.ps1. will copy the files that you downloaded in the prior step to th
