@@ -25,6 +25,13 @@ If we expand Raw, you can see the subfolder setup by year for each of the datase
 
 ![alt text](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/blob/master/images/Expanded%20View.png "Expanded view")
 
-Setting up the folder structure was a manual step taken, but could easily be scripted. An example script for creating months within a subfolder is provided within [2. Uploade to DataLake](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/2.%20Upload%20to%20DataLake) folde. 
+Setting up the folder structure was a manual step taken, but could easily be scripted. An example script,"Create Folder Structure.ps1", for creating months within a subfolder is provided in the [2. Upload to DataLake](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/2.%20Upload%20to%20DataLake) folder. 
+
 ## Uploading the data to Azure DataLake Store
-In the second folder [2. Uploade to DataLake](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/2.%20Upload%20to%20DataLake) the powershell script "Copy Files to ADLS.ps1. will copy the files that you downloaded in the prior step to th
+In the second folder [2. Uploade to DataLake](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/2.%20Upload%20to%20DataLake) the powershell script "Copy Files to ADLS.ps1" will copy the files that you downloaded in the prior step to a single folder in your Datalake account. 
+
+**NOTE:** In order to use this script, you first need to setup [Service-to-service authentication](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
+
+## Organize files into seperate Subfolders by year per dataset
+The next step will be to organize the files. You can leverage the script "Move Files Around.ps1" from the [3. Organize files to folders](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/3.%20Organize%20Files%20to%20Folders) folder. 
+
