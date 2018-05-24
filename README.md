@@ -33,5 +33,5 @@ In the second folder [2. Uploade to DataLake](https://github.com/pansaty/Buildin
 **NOTE:** In order to use this script, you first need to setup [Service-to-service authentication](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory)
 
 ## Organize files into seperate Subfolders by year per dataset
-The next step will be to organize the files. You can leverage the script "Move Files Around.ps1" from the [3. Organize files to folders](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/3.%20Organize%20Files%20to%20Folders) folder. 
+The next step will be to organize the files. You can leverage the script "Move Files Around.ps1" from the [3. Organize files to folders](https://github.com/pansaty/Building-an-Elastically-Scalable-DW/tree/master/3.%20Organize%20files%20to%20folders) folder. 
 
